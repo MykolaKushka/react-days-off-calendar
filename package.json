@@ -4,6 +4,7 @@
   "description": "Converting a vanilla JS app to React",
   "main": "index.js",
   "scripts": {
+    "start": "snowpack dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/NickMonster/react-days-off-calendar/issues"
   },
-  "homepage": "https://github.com/NickMonster/react-days-off-calendar#readme"
+  "homepage": "https://github.com/NickMonster/react-days-off-calendar#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "snowpack": "^3.8.7"
+  }
 }
