@@ -1,0 +1,19 @@
+{
+  "name": "react-days-off-calendar",
+  "version": "1.0.0",
+  "description": "Converting a vanilla JS app to React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickMonster/react-days-off-calendar.git"
+  },
+  "author": "Kushka Mykola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickMonster/react-days-off-calendar/issues"
+  },
+  "homepage": "https://github.com/NickMonster/react-days-off-calendar#readme"
+}
