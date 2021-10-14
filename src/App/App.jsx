@@ -3,6 +3,7 @@ import { CalendarHeader } from '../CalendarHeader';
 import { PeriodSelector } from '../PeriodSelector';
 import { CheckboxFilters } from '../CheckboxFilters';
 import { CalendarNav } from '../CalendarNav';
+import { CalendarTable } from '../CalendarTable';
 
 export const App = () => {
   const daysOff = useState({
@@ -197,7 +198,13 @@ export const App = () => {
 
             <PeriodSelector />
 
-            <CalendarNav monthsValue="12" />
+            <div className="calendars">
+              <div id="calendar" className="calendar">
+                <CalendarNav monthsValue="12" />
+
+                <CalendarTable monthsValue="12" />
+              </div>
+            </div>
 
             <CheckboxFilters />
 

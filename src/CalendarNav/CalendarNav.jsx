@@ -7,7 +7,7 @@ export const CalendarNav = (props) => {
   
   const monthsQuantity = parseInt(props.monthsValue);
 
-   if (monthsQuantity == '12') {
+  if (monthsQuantity == '12') {
      startDate.setMonth(0);
      endDate.setMonth(11);
   }
@@ -23,15 +23,10 @@ export const CalendarNav = (props) => {
   // console.log(monthsQuantity);
 
   return (
-    <div className="calendars">
-      <div id="calendar" className="calendar">
-        <div className="calendar-header">
-          <div className="prev" id="prevBtnCalendar"></div>
-          <div id="year-title" className="year-title">{startMonthTitle} {year} - {endMonthTitle } { year }</div>
-          <div className="next" id="nextBtnCalendar"></div>
-        </div>
-      </div>
+    <div className="calendar-header">
+      <div className="prev" id="prevBtnCalendar"></div>
+      <div id="year-title" className="year-title">{startMonthTitle} {year} - {endMonthTitle } { year }</div>
+      <div className="next" id="nextBtnCalendar"></div>
     </div>
-    
   )
 }
