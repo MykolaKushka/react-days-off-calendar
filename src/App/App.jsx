@@ -185,6 +185,8 @@ export const App = () => {
     IsThereOverlappingAbsence: true,
     ErrorMessage: null,
   });
+
+  const [monthsValue, changeMonthSelector] = useState("12");
   
   return (<>
     <main className="calendar-content">
@@ -196,13 +198,13 @@ export const App = () => {
 
           <div className="calendars-box">
 
-            <PeriodSelector />
+            <PeriodSelector onChange={(monthsValue) => changeMonthSelector(monthsValue)}/>
 
             <div className="calendars">
               <div id="calendar" className="calendar">
-                <CalendarNav monthsValue="12" />
+                <CalendarNav />
 
-                <CalendarTable monthsValue="12" />
+                <CalendarTable monthsValue={monthsValue}  />
               </div>
             </div>
 

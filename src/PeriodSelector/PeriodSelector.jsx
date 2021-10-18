@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-export const PeriodSelector = () => {
+export const PeriodSelector = props => {
   const [options] = useState([
     {
       value: '3', label: '3 Month'
@@ -16,8 +16,8 @@ export const PeriodSelector = () => {
   return (
     <div className="calendars-select">
       <div className="month-select">
-        <select defaultValue="12" 
-          className="selectpicker show-tick">
+        <select defaultValue="12"
+          className="show-tick" id="monthsQuantitySelector" onChange={ event => props.onChange(event.target.value) }>
           {options.map(({label, value}) => (
             <option
               key={value}
@@ -26,7 +26,7 @@ export const PeriodSelector = () => {
               {label}
             </option>
           ))}
-        </select>
+        </select>       
       </div>
     </div>
   )

@@ -1,15 +1,20 @@
 import React from 'react';
 
 export const CalendarTable = (props) => {
-  const monthsQuantity = parseInt(props.monthsValue);
-  const startDate = new Date();
-  const endDate = new Date();
+  let monthsQuantity = parseInt(props.monthsValue);
+  let startDate = new Date();
+  let endDate = new Date();
 
-  if (monthsQuantity == '12') {
+
+  if (monthsQuantity == '3') {
+    endDate.setMonth(startDate.getMonth() + 2)
+  } else if (monthsQuantity == '6') {
+    endDate.setMonth(startDate.getMonth() + 5)
+  } else {
      startDate.setMonth(0);
      endDate.setMonth(11);
   }
-
+  
   let date = new Date(startDate);
   let year = date.getFullYear()
 

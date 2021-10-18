@@ -1,22 +1,26 @@
 import React from 'react';
 
 export const CalendarNav = (props) => {
-  const startDate = new Date();
-  const year = startDate.getFullYear();
-  const endDate = new Date();
-  
-  const monthsQuantity = parseInt(props.monthsValue);
+  let monthsQuantity = parseInt(props.monthsValue);
+  let startDate = new Date();
+  let year = startDate.getFullYear();
+  let endDate = new Date();
 
-  if (monthsQuantity == '12') {
+
+  if (monthsQuantity == '3') {
+    endDate.setMonth(startDate.getMonth() + 2)
+  } else if (monthsQuantity == '6') {
+    endDate.setMonth(startDate.getMonth() + 5)
+  } else {
      startDate.setMonth(0);
      endDate.setMonth(11);
   }
-
-  const startMonthTitle = startDate
+  
+  let startMonthTitle = startDate
       .toLocaleString('en-us', { month: 'short' })
     .toLowerCase();
   
-  const endMonthTitle = endDate
+  let endMonthTitle = endDate
       .toLocaleString('en-us', { month: 'short' })
     .toLowerCase();
 
