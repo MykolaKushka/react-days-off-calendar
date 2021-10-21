@@ -186,8 +186,31 @@ export const App = () => {
     ErrorMessage: null,
   });
 
-  const [monthsValue, changeMonthSelector] = useState("12");
-  
+
+  const [monthsValue, changeMonthSelector] = useState(12);
+
+
+  let startDate = new Date();
+
+  let [shownDate, changeShownDate] = useState(startDate);
+
+
+  if (monthsValue == '3') {
+    shownDate = new Date();
+    startDate = new Date();
+  } else if (monthsValue == '6') {
+    shownDate = new Date();
+    startDate = new Date();
+  } else {
+    startDate.setMonth(0);
+    shownDate = new Date(shownDate);
+    shownDate.setMonth(0);
+  }
+
+  let endDate = new Date(shownDate);
+
+  endDate.setMonth(shownDate.getMonth() + (monthsValue - 1))
+
   return (<>
     <main className="calendar-content">
       <div className="my-time-off mainMargin-top">
@@ -198,13 +221,13 @@ export const App = () => {
 
           <div className="calendars-box">
 
-            <PeriodSelector onChange={(monthsValue) => changeMonthSelector(monthsValue)}/>
+            <PeriodSelector onChange={(monthsValue) => { changeMonthSelector(monthsValue)}}/>
 
             <div className="calendars">
               <div id="calendar" className="calendar">
-                <CalendarNav />
+                <CalendarNav monthsValue={monthsValue} startDate = {startDate} endDate = {endDate} onClick={(shownDate) => {changeShownDate(shownDate)}} shownDate={new Date(shownDate)} />
 
-                <CalendarTable monthsValue={monthsValue}  />
+                <CalendarTable monthsValue={monthsValue} startDate = {new Date(shownDate)} />
               </div>
             </div>
 

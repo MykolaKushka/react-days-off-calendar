@@ -17,7 +17,7 @@ export const PeriodSelector = props => {
     <div className="calendars-select">
       <div className="month-select">
         <select defaultValue="12"
-          className="show-tick" id="monthsQuantitySelector" onChange={ event => props.onChange(event.target.value) }>
+          className="show-tick" onChange={event => { props.onChange(event.target.value); }} >
           {options.map(({label, value}) => (
             <option
               key={value}

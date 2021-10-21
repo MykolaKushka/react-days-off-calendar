@@ -1,22 +1,12 @@
 import React from 'react';
 
 export const CalendarTable = (props) => {
-  let monthsQuantity = parseInt(props.monthsValue);
-  let startDate = new Date();
-  let endDate = new Date();
-
-
-  if (monthsQuantity == '3') {
-    endDate.setMonth(startDate.getMonth() + 2)
-  } else if (monthsQuantity == '6') {
-    endDate.setMonth(startDate.getMonth() + 5)
-  } else {
-     startDate.setMonth(0);
-     endDate.setMonth(11);
-  }
+  const { monthsValue, startDate } = props;  
   
   let date = new Date(startDate);
-  let year = date.getFullYear()
+  let month = date.getMonth()
+  let year = parseInt(date.getFullYear());
+
 
   let monthsTables = [];
   let monthLongName = ''
@@ -27,7 +17,7 @@ export const CalendarTable = (props) => {
   }
 
   const showDaysInMonth = (month, year) => {
-    let date = 1;
+    let day = 1;
     let daysRows = [];
     let days = [];
     let firstDay = new Date(year, month).getDay();
@@ -40,14 +30,14 @@ export const CalendarTable = (props) => {
           <td key={j}></td>
           )
         }
-        else if (date > daysInMonth(month, year)) {
+        else if (day > daysInMonth(month, year)) {
         }
         else {
         days.push(
-          <td key={j} className="day">{date}
+          <td key={j} className="day">{day}
           </td>
           )
-          date++;
+          day++;
         }
       }
       daysRows.push(<tr key={i}>
@@ -58,8 +48,10 @@ export const CalendarTable = (props) => {
     return daysRows;
   }
 
-  for (let i = 0; i < monthsQuantity; i++) {
-    monthLongName = date.toLocaleString('en-us', { month: 'long' });
+  for (let i = date.getMonth(); i < date.getMonth() + parseInt(monthsValue); i++) {
+    let tempDate = new Date()
+    tempDate.setMonth(month);
+    monthLongName = tempDate.toLocaleString('en-us', { month: 'long' });
     monthsTables.push(
       <table className="month" key={i}>
         <thead>
@@ -71,11 +63,16 @@ export const CalendarTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {showDaysInMonth(i, year)}
+          {showDaysInMonth(month, year)}
         </tbody>
       </table>
     );
-     if (i < monthsQuantity - 1) date.setMonth(date.getMonth() + 1);
+    if (month < 12) month++;
+    if (month == 12) {
+      year++
+      month = 0;
+    }
+    
   }
 
   return (
