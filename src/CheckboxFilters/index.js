@@ -1,1 +1,1 @@
-export * from './CheckboxFilters';
+export * from './CheckboxFilters.js';

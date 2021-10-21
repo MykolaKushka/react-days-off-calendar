@@ -1,1 +1,1 @@
-export * from './CalendarTable';
+export * from './CalendarTable.js';

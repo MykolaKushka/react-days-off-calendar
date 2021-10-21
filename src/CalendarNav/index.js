@@ -1,1 +1,1 @@
-export * from './CalendarNav';
+export * from './CalendarNav.js';

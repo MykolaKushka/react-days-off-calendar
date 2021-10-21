@@ -1,1 +1,1 @@
-export * from './CalendarHeader';
+export * from './CalendarHeader.js';
