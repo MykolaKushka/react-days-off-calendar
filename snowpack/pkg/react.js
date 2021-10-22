@@ -1,6 +1,6 @@
 import { r as react } from './common/index-c36b8494.js';
 export { r as __moduleExports, r as default } from './common/index-c36b8494.js';
-import './common/_commonjsHelpers-668e6127.js';
+import './common/commonjsHelpers-668e6127.js';
 import './object-assign.js';
 
 

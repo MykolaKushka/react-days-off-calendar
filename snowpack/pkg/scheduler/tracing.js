@@ -1,4 +1,4 @@
-import { c as createCommonjsModule } from '../common/_commonjsHelpers-668e6127.js';
+import { c as createCommonjsModule } from '../common/commonjsHelpers-668e6127.js';
 
 /** @license React v0.20.2
  * scheduler-tracing.production.min.js

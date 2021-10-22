@@ -1,4 +1,4 @@
-import { c as createCommonjsModule } from './common/_commonjsHelpers-668e6127.js';
+import { c as createCommonjsModule } from './common/commonjsHelpers-668e6127.js';
 import { r as react } from './common/index-c36b8494.js';
 import objectAssign from './object-assign.js';
 import { s as scheduler } from './common/index-705575f5.js';

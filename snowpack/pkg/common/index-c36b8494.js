@@ -1,4 +1,4 @@
-import { c as createCommonjsModule } from './_commonjsHelpers-668e6127.js';
+import { c as createCommonjsModule } from './commonjsHelpers-668e6127.js';
 import objectAssign from '../object-assign.js';
 
 var react_production_min = createCommonjsModule(function (module, exports) {
