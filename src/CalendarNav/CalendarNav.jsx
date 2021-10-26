@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const CalendarNav = (props) => {
-  const { startDate, endDate, shownDate, monthsValue } = props;
+  const { startDate, endDate, shownDate, monthsValue, daysOff } = props;
   let yearStart = shownDate.getFullYear(new Date(shownDate));
     
   let yearEnd = endDate.getFullYear()
@@ -14,12 +14,18 @@ export const CalendarNav = (props) => {
       .toLocaleString('en-us', { month: 'short' })
     .toLowerCase();
   
+  let data = daysOff[0];  
+  
   const showPrevPeriod = () => {
-    if (monthsValue == '12') {
+    if (yearStart > data.AbsenceDataCutOffYear) {
       yearStart--
       props.onClick(shownDate.setFullYear(yearStart))
-    } else {
+    }
+    else if (yearStart == data.AbsenceDataCutOffYear && monthsValue != '12' && shownDate.getMonth() >= (monthsValue - 1)) {
       props.onClick(shownDate.setMonth(shownDate.getMonth() - parseInt(monthsValue)))
+    }
+    else {
+      props.onClick(shownDate.setMonth(0))
     }
   }
 
