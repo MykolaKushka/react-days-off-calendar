@@ -186,23 +186,21 @@ export const App = () => {
     ErrorMessage: null,
   });
 
-
   const [monthsValue, changeMonthSelector] = useState(12);
-
 
   let startDate = new Date();
 
   let [shownDate, changeShownDate] = useState(startDate);
 
+  // console.log(startDate.getMonth());
 
   if (monthsValue == '3') {
-    shownDate = new Date();
-    startDate = new Date();
+    shownDate = new Date(shownDate);
+    shownDate.setMonth(shownDate.getMonth())
   } else if (monthsValue == '6') {
-    shownDate = new Date();
-    startDate = new Date();
+    shownDate = new Date(shownDate);
+    shownDate.setMonth(shownDate.getMonth())
   } else {
-    startDate.setMonth(0);
     shownDate = new Date(shownDate);
     shownDate.setMonth(0);
   }
@@ -225,7 +223,7 @@ export const App = () => {
 
             <div className="calendars">
               <div id="calendar" className="calendar">
-                <CalendarNav monthsValue={monthsValue} startDate = {startDate} endDate = {endDate} onClick={(shownDate) => {changeShownDate(shownDate)}} shownDate={new Date(shownDate)} />
+                <CalendarNav monthsValue={monthsValue} startDate = {new Date(shownDate)} endDate = {endDate} onClick={(shownDate) => {changeShownDate(shownDate)}} shownDate={new Date(shownDate)} />
 
                 <CalendarTable monthsValue={monthsValue} startDate = {new Date(shownDate)} />
               </div>
