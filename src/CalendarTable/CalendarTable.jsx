@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const CalendarTable = (props) => {
-  const { monthsValue, startDate } = props;  
+  const { monthsValue, startDate, daysOff } = props;  
   
   let date = new Date(startDate);
   let month = date.getMonth()
@@ -11,6 +11,33 @@ export const CalendarTable = (props) => {
   let monthsTables = [];
   let monthLongName = ''
   const Days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
+  let data = daysOff[0];
+
+
+  // Check holydays
+  let holydays = data.CalendarNationalHolidays
+
+  holydays.forEach((item, index) => {
+    item = item.slice(0, 10);
+    holydays[index] = item;
+  })
+
+  const checkHolyday = (id) => {
+    let bool = false
+    holydays.forEach((item, index) => {
+      if (holydays[index] == id) {
+        bool = true;
+        return bool
+      }
+    });
+    return bool
+  }
+
+  // Add days off
+  const checkDayOff = (id) => {
+
+  }
 
   const daysInMonth = (iMonth, iYear) => {
     return new Date(iYear, iMonth + 1, 0).getDate();
@@ -33,9 +60,19 @@ export const CalendarTable = (props) => {
         else if (day > daysInMonth(month, year)) {
         }
         else {
-        days.push(
-          <td key={j} className="day">{day}
-          </td>
+          // Add holydays
+          let id = `${year}-${month + 1 < 10 ? '0' + (month + 1) : month + 1}-${day < 10 ? '0' + day : day}`
+          let dayClasses;
+          if (checkHolyday(id)) dayClasses = 'day day-holyday';
+          else dayClasses = 'day';
+          
+          // Add days off
+          let style = ''
+          // if(checkDayOff(id))
+
+          days.push(
+            <td key={j} className={dayClasses} id={id}>{day}
+            </td>
           )
           day++;
         }

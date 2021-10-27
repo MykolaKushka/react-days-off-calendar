@@ -225,11 +225,11 @@ export const App = () => {
               <div id="calendar" className="calendar">
                 <CalendarNav monthsValue={monthsValue} startDate = {new Date(shownDate)} endDate = {endDate} onClick={(shownDate) => {changeShownDate(shownDate)}} shownDate={new Date(shownDate)} daysOff={daysOff} />
 
-                <CalendarTable monthsValue={monthsValue} startDate = {new Date(shownDate)} />
+                <CalendarTable monthsValue={monthsValue} startDate = {new Date(shownDate)} daysOff={daysOff} />
               </div>
             </div>
 
-            <CheckboxFilters />
+            <CheckboxFilters daysOff={daysOff} />
 
           </div>
 
