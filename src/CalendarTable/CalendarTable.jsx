@@ -4,6 +4,7 @@ export const CalendarTable = (props) => {
   const { monthsValue, startDate, daysOff } = props;  
   
   let date = new Date(startDate);
+  date.setDate(1);
   let month = date.getMonth()
   let year = parseInt(date.getFullYear());
 
@@ -13,6 +14,7 @@ export const CalendarTable = (props) => {
   const Days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
   let data = daysOff[0];
+  let dayClasses;
 
 
   // Check holydays
@@ -35,8 +37,20 @@ export const CalendarTable = (props) => {
   }
 
   // Add days off
-  const checkDayOff = (id) => {
+  let bgColor = ''
 
+  const checkDayOff = (id) => {
+    let idDate = new Date(id);
+    bgColor = ''
+    data.Data.forEach((item) => {
+      if (idDate >= date && idDate >= new Date(item.AbsenceStartDate.slice(0, 10)) && idDate <= new Date(item.AbsenceFinishDate.slice(0, 10))) {
+        if (bgColor == '') {
+          bgColor = `#${item.AbsenceLabelColor}`
+        } else {
+          dayClasses += ' day-multi'
+        }
+      }
+    })
   }
 
   const daysInMonth = (iMonth, iYear) => {
@@ -62,18 +76,19 @@ export const CalendarTable = (props) => {
         else {
           // Add holydays
           let id = `${year}-${month + 1 < 10 ? '0' + (month + 1) : month + 1}-${day < 10 ? '0' + day : day}`
-          let dayClasses;
           if (checkHolyday(id)) dayClasses = 'day day-holyday';
           else dayClasses = 'day';
           
           // Add days off
-          let style = ''
-          // if(checkDayOff(id))
+          let style = {}
+
+          checkDayOff(id)
 
           days.push(
-            <td key={j} className={dayClasses} id={id}>{day}
+            <td key={j} className={dayClasses} id={id} style={{ backgroundColor: bgColor }}>{day}
             </td>
           )
+
           day++;
         }
       }
