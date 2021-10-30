@@ -18,8 +18,7 @@ export const CalendarNav = (props) => {
   
   const showPrevPeriod = () => {
     if (yearStart > data.AbsenceDataCutOffYear) {
-      yearStart--
-      props.onClick(shownDate.setFullYear(yearStart))
+      props.onClick(shownDate.setMonth(shownDate.getMonth() - parseInt(monthsValue)))
     }
     else if (yearStart == data.AbsenceDataCutOffYear && monthsValue != '12' && shownDate.getMonth() >= (monthsValue - 1)) {
       props.onClick(shownDate.setMonth(shownDate.getMonth() - parseInt(monthsValue)))
