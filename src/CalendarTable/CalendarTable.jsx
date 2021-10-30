@@ -44,11 +44,20 @@ export const CalendarTable = (props) => {
     bgColor = ''
     data.Data.forEach((item) => {
       if (idDate >= date && idDate >= new Date(item.AbsenceStartDate.slice(0, 10)) && idDate <= new Date(item.AbsenceFinishDate.slice(0, 10))) {
+
         if (bgColor == '') {
           bgColor = `#${item.AbsenceLabelColor}`
-        } else {
+        } else if (!dayClasses.includes('day-multi')){
           dayClasses += ' day-multi'
         }
+      }
+
+      if (id == item.AbsenceStartDate.slice(0, 10) && !dayClasses.includes('day-first')) {
+         dayClasses += ' day-first'
+      }
+
+      if (id == item.AbsenceFinishDate.slice(0, 10) && !dayClasses.includes('day-last')) {
+         dayClasses += ' day-last'
       }
     })
   }
